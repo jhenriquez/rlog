@@ -11,7 +11,7 @@ class PostRepository
   end
   
   def getById(id)
-    @posts.select { |p| return p if p["id"] = id }
+    @posts.select { |p| return p if p["id"] == id }
   end
   
   def getByAuthor(author)
@@ -25,7 +25,7 @@ class PostRepository
   def getAllTags
     @posts.inject(Hash.new(0)) do |tags, post|
       post['tags'].scan(/\w+/).each { |tag| tags[tag] += 1 }
-      tags 
+      tags
     end
   end
 end
